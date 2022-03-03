@@ -5,7 +5,7 @@ import Todo from './Todo'
 
 const TodoList = ({todos ,deleteTodo}) => {
     const alltodos =todos.map((items)=>{
-        return <Todo key={items.id} todoItem={items} deleteTodo={deleteTodo} />
+        return <Todo key={items.id} item={items} deleteTodo={deleteTodo} />
     })
   return (
   <div>

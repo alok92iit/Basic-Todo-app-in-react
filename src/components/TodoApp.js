@@ -1,10 +1,11 @@
-import React ,{useState} from 'react'
+import React ,{useEffect, useState} from 'react'
 import { Form } from './Form'
 import TodoList from './TodoList'
 
 const TodoApp = () => {
-const [inputText ,setInput] =useState('')
-    const [todos ,setTodos] =useState([])
+    const  dummyTodo =JSON.parse(window.localStorage.getItem("todos") || "[]")    
+    console.log(dummyTodo)
+    const [todos ,setTodos] =useState(dummyTodo)
     const addTodos =(newtodo)=>{
         setTodos([...todos,newtodo])
     }
@@ -13,13 +14,19 @@ const [inputText ,setInput] =useState('')
             return prevState.filter((todos)=>todos.id !=id)
         })
     }
-  return (
+  
+    useEffect(()=>
+    {
+      window.localStorage.setItem("todos",JSON.stringify(todos))  
+    },[todos])
+    
+    return (
 
 
 
     <div>
         <center><h1>todoApp</h1>
-        <Form setInput={setInput} inputText={inputText} addTodos={addTodos}/>
+        <Form addTodos={addTodos}/>
         <TodoList  todos={todos} deleteTodo={deleteTodo}/>
         </center>
     </div>

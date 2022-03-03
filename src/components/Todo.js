@@ -1,9 +1,8 @@
 import React from 'react'
 
-const Todo = ({key ,todoItem,deleteTodo}) => {
+const Todo = ({item,deleteTodo}) => {
   return (
-    <li style={{listStyle :'none'}} key={key}>{todoItem.todo}
-    <button  onClick={()=>deleteTodo(todoItem.id)} style={{marginLeft :"20px"}}>delete</button></li>
+    <li style={{listStyle :'none'}}>{item.todo}<button  onClick={()=>deleteTodo(item.id)} style={{marginLeft :"20px"}}>delete</button></li>
   )
 }
 

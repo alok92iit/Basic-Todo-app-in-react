@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { v4 as uuid } from 'uuid';
-export const Form = ({inputText ,setInput,addTodos}) => {
-  
+export const Form = ({addTodos}) => {
+  const [inputText,setInput]=useState("")
   const inputTextHandler =(e)=>{
       setInput(e.target.value)
 
   }
   const submitHandler =(e)=>{
     e.preventDefault()
-    if(inputText==""){
+    if(inputText===""){
         return 
     }
     const createTodo ={
